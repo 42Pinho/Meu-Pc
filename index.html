@@ -1,1238 +1,140 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>42 Building My PC</title>
-
-  <meta name="description" content="Monte seu computador ideal com o 42 Building My PC. Escolha componentes de hardware e periféricos, veja o orçamento em tempo real e gere um relatório completo com links direto para os vendedores.">
-  <meta name="author" content="Alex de Pinho">
-  <link rel="canonical" href="https://42pinho.github.io/Meu-Pc/">
-
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="42 Building My PC">
-  <meta property="og:description" content="Monte seu computador ideal e gere um orçamento completo com links direto para os vendedores.">
-  <meta property="og:url" content="https://42pinho.github.io/Meu-Pc/">
-  <meta property="og:image" content="https://42pinho.github.io/Meu-Pc/assets/og-image.png">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="42 Building My PC">
-  <meta name="twitter:description" content="Monte seu computador ideal e gere um orçamento completo com links direto para os vendedores.">
-  <meta name="twitter:image" content="https://42pinho.github.io/Meu-Pc/assets/og-image.png">
-
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230d1117'/%3E%3Ctext x='50' y='62' font-family='Arial, sans-serif' font-size='42' font-weight='700' fill='%237dd3dc' text-anchor='middle'%3E42%3C/text%3E%3C/svg%3E">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root, [data-theme="dark"] {
-      --bg: #0d1117;
-      --surface: #161b22;
-      --surface-2: #1c2129;
-      --border: #21262d;
-      --text: #c9d1d9;
-      --text-muted: #8b949e;
-      --text-faint: #5a6169;
-      --accent: #7dd3dc;
-      --accent-soft: rgba(125, 211, 220, 0.10);
-      --accent-border: #3a5a5f;
-      --success: #25d366;
-      --danger: #d9534f;
-      --ok: #3ba55c;
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 14px;
-      --shadow-soft: 0 10px 24px rgba(0, 0, 0, 0.18);
-    }
-
-    [data-theme="light"] {
-      --bg: #f7f6f2;
-      --surface: #ffffff;
-      --surface-2: #f3f0ec;
-      --border: #e0ddd7;
-      --text: #24262b;
-      --text-muted: #6b6f76;
-      --text-faint: #9a9da3;
-      --accent: #0f9aa6;
-      --accent-soft: rgba(15, 154, 166, 0.08);
-      --accent-border: #a9d9dd;
-      --shadow-soft: 0 10px 24px rgba(15, 25, 35, 0.08);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      min-height: 100vh;
-      transition: background 0.25s ease, color 0.25s ease;
-    }
-
-    header {
-      border-bottom: 1px solid var(--border);
-      padding: 28px 24px;
-      background: var(--surface);
-    }
-
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .logo-mark {
-      width: 36px;
-      height: 36px;
-      border: 1.5px solid var(--accent);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent);
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: 0.95rem;
-      flex-shrink: 0;
-    }
-
-    h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(1.25rem, 1rem + 1vw, 1.6rem);
-      font-weight: 600;
-      letter-spacing: 0.2px;
-      color: var(--text);
-    }
-
-    h1 span { color: var(--accent); }
-
-    .by-pinho {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 500;
-      color: var(--text-faint);
-      text-decoration: none;
-      border: 1px solid var(--border);
-      border-radius: 9999px;
-      padding: 3px 10px;
-      margin-left: 8px;
-      vertical-align: middle;
-      letter-spacing: 0.02em;
-      transition: color 0.2s ease, border-color 0.2s ease;
-    }
-
-    .by-pinho:hover {
-      color: var(--accent);
-      border-color: var(--accent-border);
-    }
-
-    header p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-top: 2px;
-    }
-
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 40px 24px 80px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-
-    @media (min-width: 960px) {
-      main {
-        grid-template-columns: 1fr 340px;
-        align-items: start;
-      }
-    }
-
-    section.componentes h2,
-    aside.resumo h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    section.componentes h2 { margin-bottom: 20px; }
-    aside.resumo h2 { margin-bottom: 16px; }
-
-    .grupo-componentes { margin-bottom: 40px; }
-    .grupo-componentes:last-child { margin-bottom: 0; }
-
-    #lista-hardware, #lista-perifericos {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
-      gap: 16px;
-    }
-
-    .card-componente {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 18px;
-      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
-    }
-
-    .card-componente:hover {
-      border-color: var(--accent-border);
-      background: var(--surface-2);
-      transform: translateY(-1px);
-    }
-
-    .card-componente label {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.75rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-faint);
-      margin-bottom: 10px;
-      font-weight: 500;
-    }
-
-    .icone-categoria {
-      width: 16px;
-      height: 16px;
-      color: var(--accent);
-      flex-shrink: 0;
-    }
-
-    .card-componente select,
-    .input-orcamento {
-      width: 100%;
-      background: var(--bg);
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 10px 12px;
-      font-size: 0.92rem;
-      font-family: 'Inter', sans-serif;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .card-componente select {
-      cursor: pointer;
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237dd3dc' stroke-width='1.5' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 12px center;
-      padding-right: 32px;
-    }
-
-    .card-componente select:focus,
-    .input-orcamento:focus {
-      outline: none;
-      border-color: var(--accent);
-    }
-
-    .link-produto {
-      display: none;
-      margin-top: 10px;
-      font-size: 0.8rem;
-      color: var(--accent);
-      text-decoration: none;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .link-produto.visivel { display: inline-flex; }
-    .link-produto:hover { color: var(--text); }
-
-    .link-produto svg {
-      width: 13px;
-      height: 13px;
-      flex-shrink: 0;
-    }
-
-    .skeleton-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
-      gap: 16px;
-    }
-
-    .skeleton-card {
-      height: 116px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border);
-      background: linear-gradient(90deg, var(--surface) 25%, var(--surface-2) 50%, var(--surface) 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.35s ease-in-out infinite;
-    }
-
-    @keyframes shimmer {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-
-    .resumo-vazio {
-      color: var(--text-muted);
-      font-size: 0.88rem;
-      padding: 4px 0 8px;
-    }
-
-    .resumo-item.novo {
-      animation: fadeSlideIn 0.28s ease;
-    }
-
-    @keyframes fadeSlideIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    #valor-total.total-destaque {
-      animation: totalPulse 0.35s ease;
-    }
-
-    @keyframes totalPulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.06); }
-      100% { transform: scale(1); }
-    }
-
-    .erro-catalogo {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      padding: 18px;
-      border: 1px solid rgba(217, 83, 79, 0.35);
-      border-radius: var(--radius-md);
-      background: rgba(217, 83, 79, 0.06);
-    }
-
-    .btn-retry { max-width: 220px; }
-
-    .placeholder-msg {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      padding: 20px 0;
-    }
-
-    aside.resumo {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 24px;
-      position: sticky;
-      top: 24px;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .resumo-controles {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 20px;
-      padding: 16px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      background: var(--surface-2);
-    }
-
-    .controle-label {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--text-faint);
-      font-weight: 600;
-    }
-
-    .input-orcamento.excedido {
-      border-color: var(--danger);
-      box-shadow: 0 0 0 3px rgba(217, 83, 79, 0.12);
-    }
-
-    .orcamento-status {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .orcamento-status.excedido {
-      color: var(--danger);
-      font-weight: 600;
-    }
-
-    .orcamento-status.ok {
-      color: var(--ok);
-      font-weight: 600;
-    }
-
-    .btn-secundario,
-    .btn-relatorio {
-      width: 100%;
-      min-height: 44px;
-      padding: 12px;
-      border-radius: var(--radius-sm);
-      font-size: 0.9rem;
-      font-weight: 600;
-      font-family: 'Inter', sans-serif;
-      cursor: pointer;
-      transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, transform 0.2s ease;
-    }
-
-    .btn-secundario {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secundario:hover {
-      border-color: var(--accent-border);
-      background: var(--accent-soft);
-      color: var(--accent);
-    }
-
-    #resumo-itens {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 20px;
-      max-height: 320px;
-      overflow-y: auto;
-    }
-
-    .resumo-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      font-size: 0.85rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 8px;
-    }
-
-    .resumo-item span:first-child {
-      color: var(--text-muted);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .resumo-item span:last-child {
-      color: var(--text);
-      font-weight: 500;
-      white-space: nowrap;
-    }
-
-    .total-linha {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding-top: 14px;
-      border-top: 1px solid var(--border);
-      margin-bottom: 20px;
-    }
-
-    .total-linha span:first-child {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-    }
-
-    #valor-total {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .btn-relatorio {
-      background: transparent;
-      color: var(--accent);
-      border: 1px solid var(--accent-border);
-    }
-
-    .btn-relatorio:hover {
-      background: var(--accent-soft);
-      border-color: var(--accent);
-      transform: translateY(-1px);
-    }
-
-    .btn-whatsapp {
-      width: 100%;
-      min-height: 44px;
-      margin-top: 12px;
-      padding: 13px;
-      background: var(--success);
-      color: #ffffff;
-      border: 1px solid var(--success);
-      border-radius: var(--radius-sm);
-      font-size: 0.9rem;
-      font-weight: 600;
-      font-family: 'Inter', sans-serif;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: filter 0.2s ease, transform 0.2s ease;
-    }
-
-    .btn-whatsapp:hover {
-      filter: brightness(1.04);
-      transform: translateY(-1px);
-    }
-
-    .btn-whatsapp:focus-visible {
-      outline: 2px solid var(--success);
-      outline-offset: 2px;
-    }
-
-    .btn-whatsapp svg {
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
-    }
-
-    footer {
-      text-align: center;
-      padding: 24px;
-      color: var(--text-faint);
-      font-size: 0.8rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .theme-toggle-wrap {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
-
-    .theme-toggle-label {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      letter-spacing: 0.03em;
-      white-space: nowrap;
-    }
-
-    .theme-switch {
-      position: relative;
-      width: 84px;
-      min-width: 84px;
-      height: 44px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      background:
-        linear-gradient(135deg, rgba(255, 210, 90, 0.10), rgba(125, 211, 220, 0.08)),
-        var(--surface-2);
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 10px;
-      cursor: pointer;
-      transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
-    }
-
-    .theme-switch:hover {
-      border-color: var(--accent-border);
-      transform: translateY(-1px);
-    }
-
-    .theme-switch:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-    }
-
-    .theme-switch-track-icon {
-      width: 16px;
-      height: 16px;
-      color: var(--text-faint);
-      position: relative;
-      z-index: 1;
-      transition: color 0.25s ease, opacity 0.25s ease;
-      opacity: 0.72;
-    }
-
-    .theme-switch-track-icon svg {
-      width: 16px;
-      height: 16px;
-      display: block;
-    }
-
-    .theme-switch-thumb {
-      position: absolute;
-      top: 4px;
-      left: 4px;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.16), rgba(255,255,255,0.04)), var(--bg);
-      border: 1px solid var(--border);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.22);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--accent);
-      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
-    }
-
-    .theme-switch-thumb svg {
-      width: 18px;
-      height: 18px;
-      position: absolute;
-      opacity: 0;
-      transform: scale(0.84) rotate(-10deg);
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    .theme-switch[data-mode="dark"] .theme-switch-thumb { transform: translateX(0); }
-    .theme-switch[data-mode="light"] .theme-switch-thumb { transform: translateX(40px); color: #d89a12; }
-
-    .theme-switch[data-mode="dark"] #thumbMoon,
-    .theme-switch[data-mode="light"] #thumbSun {
-      opacity: 1;
-      transform: scale(1) rotate(0deg);
-    }
-
-    .theme-switch[data-mode="dark"] .theme-switch-track-icon-moon,
-    .theme-switch[data-mode="light"] .theme-switch-track-icon-sun {
-      color: var(--accent);
-      opacity: 1;
-    }
-
-    .theme-switch[data-mode="light"] {
-      background:
-        linear-gradient(135deg, rgba(255, 210, 90, 0.20), rgba(255, 255, 255, 0.08)),
-        var(--surface-2);
-    }
-
-    .theme-switch[data-mode="dark"] {
-      background:
-        linear-gradient(135deg, rgba(125, 211, 220, 0.10), rgba(89, 107, 255, 0.05)),
-        var(--surface-2);
-    }
-
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    @media (max-width: 959px) {
-      main {
-        grid-template-columns: 1fr;
-        gap: 24px;
-        padding: 24px 16px 56px;
-      }
-
-      header {
-        padding: 20px 16px;
-      }
-
-      .header-inner {
-        align-items: flex-start;
-        flex-wrap: wrap;
-        gap: 14px;
-      }
-
-      .theme-toggle-wrap {
-        margin-left: 0;
-        width: 100%;
-        justify-content: space-between;
-      }
-
-      aside.resumo {
-        position: static;
-        top: auto;
-        padding: 20px;
-        order: -1;
-      }
-
-      #resumo-itens {
-        max-height: none;
-        overflow: visible;
-      }
-
-      .resumo-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-      }
-
-      .resumo-item span:first-child {
-        white-space: normal;
-        overflow: visible;
-        text-overflow: unset;
-      }
-
-      .total-linha {
-        align-items: center;
-      }
-    }
-
-    @media (max-width: 640px) {
-      h1 {
-        font-size: 1.15rem;
-        line-height: 1.3;
-      }
-
-      header p {
-        font-size: 0.85rem;
-      }
-
-      .logo-mark {
-        width: 34px;
-        height: 34px;
-        font-size: 0.9rem;
-      }
-
-      .by-pinho {
-        display: inline-flex;
-        margin-left: 0;
-        margin-top: 8px;
-      }
-
-      .card-componente { padding: 16px; }
-      aside.resumo { padding: 18px; }
-      .resumo-controles { padding: 14px; }
-      #valor-total { font-size: 1.35rem; }
-
-      .theme-switch {
-        width: 80px;
-        min-width: 80px;
-      }
-
-      .theme-switch[data-mode="light"] .theme-switch-thumb {
-        transform: translateX(36px);
-      }
-
-      footer {
-        padding: 20px 16px;
-        font-size: 0.76rem;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Orçamento - Montagem de PC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-100 min-h-screen p-4 md:p-8">
 
-  <header>
-    <div class="header-inner">
-      <div class="logo-mark">42</div>
-      <div>
-        <h1>Building My <span>PC</span> <a href="https://pinho.xyz/" target="_blank" rel="noopener noreferrer" class="by-pinho">By Pinho</a></h1>
-        <p>Monte seu computador ideal e gere um orçamento completo</p>
-      </div>
+    <div class="max-w-6xl mx-auto bg-white shadow-xl rounded-lg overflow-hidden">
+        <header class="bg-blue-600 p-6 text-white">
+            <h1 class="text-2xl font-bold">Configurador de PC Gamer</h1>
+            <p class="text-blue-100">Monte seu setup e gere seu orçamento personalizado</p>
+        </header>
 
-      <div class="theme-toggle-wrap">
-        <span class="theme-toggle-label">Tema</span>
-        <button
-          class="theme-switch"
-          id="themeToggle"
-          type="button"
-          role="switch"
-          aria-checked="true"
-          aria-label="Alternar para modo claro"
-          data-mode="dark"
-        >
-          <span class="sr-only">Alternar tema</span>
+        <main class="p-6 grid md:grid-cols-2 gap-8">
+            <section id="seletor-pecas" class="space-y-4">
+                <h2 class="text-xl font-semibold mb-4 text-gray-700">Escolha seus componentes</h2>
+                <div id="formulario-container" class="space-y-4">
+                    <p id="status-msg" class="text-gray-500 italic">Carregando componentes...</p>
+                </div>
+            </section>
 
-          <span class="theme-switch-track-icon theme-switch-track-icon-moon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-          </span>
-
-          <span class="theme-switch-track-icon theme-switch-track-icon-sun" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="5"></circle>
-              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
-            </svg>
-          </span>
-
-          <span class="theme-switch-thumb" aria-hidden="true">
-            <svg id="thumbMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-            <svg id="thumbSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="5"></circle>
-              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
-            </svg>
-          </span>
-        </button>
-      </div>
+            <section id="resumo-orcamento" class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h2 class="text-xl font-semibold mb-4 text-gray-700">Resumo do Orçamento</h2>
+                <div id="lista-itens" class="space-y-2 mb-6 text-sm"></div>
+                <div class="border-t pt-4 text-xl font-bold text-gray-800">
+                    Total: <span id="valor-total">R$ 0,00</span>
+                </div>
+                <button onclick="gerarRelatorio()" class="mt-6 w-full bg-green-600 text-white py-3 rounded-md font-bold hover:bg-green-700 transition">
+                    Visualizar Relatório (Nova Aba)
+                </button>
+            </section>
+        </main>
     </div>
-  </header>
 
-  <main>
-    <section class="componentes">
-      <div class="grupo-componentes">
-        <h2>Hardware</h2>
-        <div id="lista-hardware">
-          <div class="skeleton-grid">
-            <div class="skeleton-card"></div>
-            <div class="skeleton-card"></div>
-            <div class="skeleton-card"></div>
-            <div class="skeleton-card"></div>
-          </div>
-        </div>
-      </div>
+    <script>
+        let catalogo = {};
+        const selecoes = {};
 
-      <div class="grupo-componentes">
-        <h2>Periféricos</h2>
-        <div id="lista-perifericos">
-          <div class="skeleton-grid">
-            <div class="skeleton-card"></div>
-            <div class="skeleton-card"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <aside class="resumo">
-      <h2>Resumo do Orçamento</h2>
-
-      <div class="resumo-controles">
-        <label for="orcamentoMaximo" class="controle-label">Orçamento máximo</label>
-        <input type="number" id="orcamentoMaximo" class="input-orcamento" placeholder="Ex: 5000" min="0" step="0.01">
-        <p class="orcamento-status" id="orcamentoStatus">Defina um teto para comparar com o total da build.</p>
-        <button class="btn-secundario" id="btnLimpar" type="button">Limpar seleções</button>
-      </div>
-
-      <div id="resumo-itens"><p class="resumo-vazio">Nenhum item selecionado ainda.</p></div>
-
-      <div class="total-linha">
-        <span>Total</span>
-        <span id="valor-total">R$ 0,00</span>
-      </div>
-
-      <button class="btn-relatorio" id="btnRelatorio" type="button">Visualizar Relatório (Nova Aba)</button>
-
-      <a
-        class="btn-whatsapp"
-        href="https://wa.me/5547999145990?text=Ol%C3%A1%2C%20fiz%20um%20or%C3%A7amento%20pelo%20seu%20site%20e%20fiquei%20interessado"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M20.52 3.48A11.8 11.8 0 0 0 12.08 0C5.56 0 .24 5.3.24 11.82c0 2.08.54 4.11 1.57 5.9L0 24l6.46-1.69a11.8 11.8 0 0 0 5.62 1.43h.01c6.52 0 11.84-5.3 11.84-11.82 0-3.16-1.23-6.12-3.41-8.44ZM12.09 21.7h-.01a9.85 9.85 0 0 1-5.03-1.38l-.36-.21-3.83 1 1.02-3.73-.24-.38a9.8 9.8 0 0 1-1.53-5.18c0-5.44 4.43-9.87 9.89-9.87 2.64 0 5.11 1.02 6.97 2.89a9.8 9.8 0 0 1 2.89 6.98c0 5.44-4.44 9.88-9.87 9.88Zm5.42-7.36c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.47-2.4-1.5-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.06 2.89 1.2 3.09c.15.2 2.08 3.18 5.04 4.46.7.3 1.25.49 1.68.62.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.69.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35Z"></path>
-        </svg>
-        <span>Tire duvidas pelo Whatsapp</span>
-      </a>
-    </aside>
-  </main>
-
-  <footer>
-    42 Building My PC &middot; Ferramenta de orçamento para montagem de computadores
-  </footer>
-
-  <script>
-    const selecoes = {};
-    let catalogo = {};
-    let totalAtual = 0;
-
-    const nomesCategorias = {
-      placa_mae: 'Placa-mãe',
-      processador: 'Processador',
-      memoria_ram: 'Memória RAM',
-      ssd: 'SSD',
-      hd: 'HD',
-      fonte: 'Fonte',
-      placa_de_video: 'Placa de Vídeo',
-      gabinete: 'Gabinete',
-      fans: 'Fans',
-      watercooler: 'Water Cooler',
-      monitor: 'Monitor',
-      mouse: 'Mouse',
-      teclado: 'Teclado',
-      fone: 'Fone',
-      microfone: 'Microfone',
-      caixa_de_som: 'Caixa de Som'
-    };
-
-    const icones = {
-      placa_mae: '<path d="M4 4h16v16H4z"></path><path d="M9 4v4M15 4v4M9 20v-4M15 20v-4M4 9h4M4 15h4M20 9h-4M20 15h-4"></path>',
-      processador: '<rect x="6" y="6" width="12" height="12" rx="1"></rect><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"></path>',
-      memoria_ram: '<rect x="3" y="7" width="18" height="10" rx="1"></rect><path d="M7 7v3M11 7v3M15 7v3M19 7v3M6 17v2M18 17v2"></path>',
-      ssd: '<rect x="3" y="6" width="18" height="12" rx="2"></rect><circle cx="8" cy="12" r="2"></circle><path d="M14 10h4M14 14h4"></path>',
-      hd: '<rect x="3" y="6" width="18" height="12" rx="2"></rect><circle cx="12" cy="12" r="3"></circle><circle cx="12" cy="12" r="0.5"></circle>',
-      fonte: '<rect x="4" y="5" width="16" height="14" rx="1"></rect><path d="M9 12h6M9 9h1M9 15h1"></path><circle cx="16" cy="9" r="1"></circle>',
-      placa_de_video: '<rect x="3" y="8" width="18" height="8" rx="1"></rect><path d="M6 16v2M10 16v2M3 11h-1M3 13h-1"></path><circle cx="16" cy="12" r="1.5"></circle>',
-      gabinete: '<rect x="6" y="2" width="12" height="20" rx="1"></rect><circle cx="12" cy="6" r="1"></circle><path d="M9 10h6M9 13h6M9 16h6"></path>',
-      fans: '<circle cx="12" cy="12" r="9"></circle><path d="M12 12c0-3 2-5 4-5s2 2 0 5-4 5-4 5 0-3-2-5-4-2-4 0 2 5 4 5"></path><circle cx="12" cy="12" r="1.5"></circle>',
-      watercooler: '<path d="M12 3c3 4 5 7 5 10a5 5 0 0 1-10 0c0-3 2-6 5-10z"></path>',
-      monitor: '<rect x="3" y="4" width="18" height="12" rx="1"></rect><path d="M8 20h8M12 16v4"></path>',
-      mouse: '<rect x="7" y="3" width="10" height="18" rx="5"></rect><path d="M12 3v6"></path>',
-      teclado: '<rect x="2" y="6" width="20" height="12" rx="1"></rect><path d="M6 10h1M10 10h1M14 10h1M18 10h1M6 14h10"></path>',
-      fone: '<path d="M4 14v-2a8 8 0 0 1 16 0v2"></path><rect x="2" y="14" width="5" height="6" rx="1.5"></rect><rect x="17" y="14" width="5" height="6" rx="1.5"></rect>',
-      microfone: '<rect x="9" y="2" width="6" height="12" rx="3"></rect><path d="M5 10a7 7 0 0 0 14 0M12 19v3M8 22h8"></path>',
-      caixa_de_som: '<rect x="4" y="2" width="16" height="20" rx="2"></rect><circle cx="12" cy="8" r="3"></circle><circle cx="12" cy="17" r="1.5"></circle>'
-    };
-
-    const categoriasHardware = ['placa_mae', 'processador', 'memoria_ram', 'ssd', 'hd', 'fonte', 'placa_de_video', 'gabinete', 'fans', 'watercooler'];
-    const categoriasPerifericos = ['monitor', 'mouse', 'teclado', 'fone', 'caixa_de_som', 'microfone'];
-
-    function salvarEstado() {
-      try {
-        const dados = {
-          selecoes: Object.fromEntries(Object.entries(selecoes).map(([cat, item]) => [cat, item ? item.id : ''])),
-          orcamentoMaximo: document.getElementById('orcamentoMaximo')?.value || '',
-          tema: document.documentElement.getAttribute('data-theme') || 'dark'
-        };
-        localStorage.setItem('42-building-my-pc-state', JSON.stringify(dados));
-      } catch (erro) {
-        console.warn('Não foi possível salvar o estado local.', erro);
-      }
-    }
-
-    function restaurarEstado() {
-      try {
-        const bruto = localStorage.getItem('42-building-my-pc-state');
-        if (!bruto) return;
-        const dados = JSON.parse(bruto);
-
-        if (dados.orcamentoMaximo) {
-          const campoOrcamento = document.getElementById('orcamentoMaximo');
-          if (campoOrcamento) campoOrcamento.value = dados.orcamentoMaximo;
-        }
-
-        if (dados.selecoes) {
-          Object.entries(dados.selecoes).forEach(([cat, itemId]) => {
-            if (!itemId || !catalogo[cat]) return;
-            const select = document.getElementById('select-' + cat);
-            const escolhido = catalogo[cat].find(i => i.id === itemId);
-            if (select && escolhido) {
-              select.value = itemId;
-              selecoes[cat] = escolhido;
-              const card = select.closest('.card-componente');
-              const linkProduto = card ? card.querySelector('.link-produto') : null;
-              if (linkProduto && escolhido.link) {
-                linkProduto.href = escolhido.link;
-                linkProduto.classList.add('visivel');
-              }
+        async function carregarCatalogo() {
+            try {
+                const response = await fetch('catalogo.json');
+                if (!response.ok) throw new Error('Falha no arquivo JSON');
+                catalogo = await response.json();
+                document.getElementById('status-msg').classList.add('hidden');
+                renderizarFormulario();
+            } catch (error) {
+                console.error("Erro ao carregar catálogo:", error);
+                document.getElementById('status-msg').innerText = "Erro ao carregar o arquivo catalogo.json. Certifique-se de estar usando o Live Server.";
             }
-          });
         }
-      } catch (erro) {
-        console.warn('Não foi possível restaurar o estado salvo.', erro);
-      }
-    }
 
-    async function carregarCatalogo() {
-      const container = document.getElementById('lista-hardware');
-      const containerPerifericos = document.getElementById('lista-perifericos');
-
-      try {
-        const resposta = await fetch('catalogo.json');
-        if (!resposta.ok) throw new Error('Falha ao buscar catalogo.json');
-        catalogo = await resposta.json();
-        montarSelects();
-        configurarControlesResumo();
-        restaurarEstado();
-        atualizarResumo();
-      } catch (erro) {
-        console.error(erro);
-        const erroHtml = '<div class="erro-catalogo" role="alert"><p class="placeholder-msg">Não foi possível carregar os componentes. Verifique se o arquivo catalogo.json está na mesma pasta do index.html e se o site está sendo aberto via servidor local ou GitHub Pages.</p><button class="btn-secundario btn-retry" id="btnRetryCatalogo" type="button">Tentar novamente</button></div>';
-        container.innerHTML = erroHtml;
-        if (containerPerifericos) containerPerifericos.innerHTML = erroHtml;
-        const btnRetry = document.getElementById('btnRetryCatalogo');
-        if (btnRetry) btnRetry.addEventListener('click', carregarCatalogo);
-      }
-    }
-
-    function montarSelects() {
-      const containerHardware = document.getElementById('lista-hardware');
-      const containerPerifericos = document.getElementById('lista-perifericos');
-      containerHardware.innerHTML = '';
-      containerPerifericos.innerHTML = '';
-
-      for (const cat in catalogo) {
-        const container = categoriasPerifericos.includes(cat) ? containerPerifericos : containerHardware;
-        const card = document.createElement('div');
-        card.className = 'card-componente';
-
-        const label = document.createElement('label');
-        label.setAttribute('for', 'select-' + cat);
-        const svgIcone = icones[cat] || '<circle cx="12" cy="12" r="9"></circle>';
-        label.innerHTML = `<svg class="icone-categoria" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${svgIcone}</svg><span>${nomesCategorias[cat] || cat.replace(/_/g, ' ')}</span>`;
-
-        const select = document.createElement('select');
-        select.id = 'select-' + cat;
-
-        const optionVazio = document.createElement('option');
-        optionVazio.value = '';
-        optionVazio.textContent = '— Nenhum selecionado —';
-        select.appendChild(optionVazio);
-
-        catalogo[cat].forEach(item => {
-          const option = document.createElement('option');
-          option.value = item.id;
-          option.textContent = `${item.nome} — R$ ${item.preco.toFixed(2)}`;
-          select.appendChild(option);
-        });
-
-        const linkProduto = document.createElement('a');
-        linkProduto.className = 'link-produto';
-        linkProduto.target = '_blank';
-        linkProduto.rel = 'noopener noreferrer';
-        linkProduto.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path></svg><span>Ver produto no site do vendedor</span>';
-
-        select.addEventListener('change', () => {
-          const escolhido = catalogo[cat].find(i => i.id === select.value);
-          selecoes[cat] = escolhido || null;
-          atualizarResumo();
-
-          if (escolhido && escolhido.link) {
-            linkProduto.href = escolhido.link;
-            linkProduto.classList.add('visivel');
-          } else {
-            linkProduto.classList.remove('visivel');
-            linkProduto.removeAttribute('href');
-          }
-
-          salvarEstado();
-        });
-
-        card.appendChild(label);
-        card.appendChild(select);
-        card.appendChild(linkProduto);
-        container.appendChild(card);
-      }
-    }
-
-    function atualizarResumo() {
-      const resumoEl = document.getElementById('resumo-itens');
-      const totalEl = document.getElementById('valor-total');
-      resumoEl.innerHTML = '';
-
-      let total = 0;
-      let possuiItens = false;
-
-      for (const cat in selecoes) {
-        const item = selecoes[cat];
-        if (item) {
-          possuiItens = true;
-          total += item.preco;
-          const linha = document.createElement('div');
-          linha.className = 'resumo-item novo';
-          linha.innerHTML = `<span>✓ ${nomesCategorias[cat] || cat}: ${item.nome}</span><span>R$ ${item.preco.toFixed(2)}</span>`;
-          resumoEl.appendChild(linha);
+        function renderizarFormulario() {
+            const container = document.getElementById('formulario-container');
+            for (const categoria in catalogo) {
+                const div = document.createElement('div');
+                div.className = "flex gap-2 items-end";
+                div.innerHTML = `
+                    <div class="flex-grow">
+                        <label class="block text-sm font-medium text-gray-700 capitalize">${categoria.replace('_', ' ')}</label>
+                        <select onchange="atualizarTotal('${categoria}', this.value)" id="select-${categoria}" class="w-full p-2 border rounded-md">
+                            <option value="">Selecione...</option>
+                            ${catalogo[categoria].map(item => `<option value="${item.id}">${item.nome} - R$ ${item.preco.toFixed(2)}</option>`).join('')}
+                        </select>
+                    </div>
+                    <a href="#" id="link-${categoria}" target="_blank" class="hidden bg-gray-200 hover:bg-gray-300 p-2 rounded-md mb-0.5">🔗</a>
+                `;
+                container.appendChild(div);
+            }
         }
-      }
 
-      if (!possuiItens) {
-        resumoEl.innerHTML = '<p class="resumo-vazio">Nenhum item selecionado ainda.</p>';
-      }
-
-      totalAtual = total;
-      totalEl.classList.remove('total-destaque');
-      void totalEl.offsetWidth;
-      totalEl.textContent = `R$ ${total.toFixed(2)}`;
-      totalEl.classList.add('total-destaque');
-      validarOrcamentoMaximo();
-    }
-
-    function configurarControlesResumo() {
-      const campoOrcamento = document.getElementById('orcamentoMaximo');
-      const btnLimpar = document.getElementById('btnLimpar');
-      const btnRelatorio = document.getElementById('btnRelatorio');
-
-      if (campoOrcamento && campoOrcamento.dataset.ready !== 'true') {
-        campoOrcamento.addEventListener('input', () => {
-          validarOrcamentoMaximo();
-          salvarEstado();
-        });
-        campoOrcamento.dataset.ready = 'true';
-      }
-
-      if (btnLimpar && btnLimpar.dataset.ready !== 'true') {
-        btnLimpar.addEventListener('click', limparSelecoes);
-        btnLimpar.dataset.ready = 'true';
-      }
-
-      if (btnRelatorio && btnRelatorio.dataset.ready !== 'true') {
-        btnRelatorio.addEventListener('click', gerarRelatorio);
-        btnRelatorio.dataset.ready = 'true';
-      }
-    }
-
-    function validarOrcamentoMaximo() {
-      const campoOrcamento = document.getElementById('orcamentoMaximo');
-      const status = document.getElementById('orcamentoStatus');
-      const valor = parseFloat(campoOrcamento.value);
-
-      campoOrcamento.classList.remove('excedido');
-      status.classList.remove('excedido', 'ok');
-
-      if (!campoOrcamento.value || Number.isNaN(valor)) {
-        status.textContent = 'Defina um teto para comparar com o total da build.';
-        return;
-      }
-
-      const diferenca = valor - totalAtual;
-
-      if (diferenca < 0) {
-        campoOrcamento.classList.add('excedido');
-        status.classList.add('excedido');
-        status.textContent = `O total ultrapassou o orçamento em R$ ${Math.abs(diferenca).toFixed(2)}.`;
-      } else {
-        status.classList.add('ok');
-        status.textContent = `Ainda restam R$ ${diferenca.toFixed(2)} dentro do orçamento definido.`;
-      }
-    }
-
-    function limparSelecoes() {
-      document.querySelectorAll('.card-componente select').forEach(select => {
-        select.value = '';
-      });
-
-      document.querySelectorAll('.link-produto').forEach(link => {
-        link.classList.remove('visivel');
-        link.removeAttribute('href');
-      });
-
-      for (const cat in selecoes) {
-        selecoes[cat] = null;
-      }
-
-      atualizarResumo();
-      salvarEstado();
-    }
-
-    function gerarRelatorio() {
-      const totalEl = document.getElementById('valor-total');
-      if (!totalEl) {
-        console.error('Elemento #valor-total não encontrado');
-        return;
-      }
-
-      const total = totalEl.textContent;
-      const dataAtual = new Date().toLocaleDateString('pt-BR');
-
-      let itensHtml = '';
-      for (const cat in selecoes) {
-        const item = selecoes[cat];
-        if (item) {
-          const nomeProduto = item.link
-            ? `<a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.nome}</a>`
-            : item.nome;
-
-          itensHtml += `
-            <div class="item">
-              <span><strong>${(nomesCategorias[cat] || cat).toUpperCase()}:</strong> ${nomeProduto}</span>
-              <span class="preco">R$ ${item.preco.toFixed(2)}</span>
-            </div>
-          `;
+        function atualizarTotal(categoria, itemId) {
+            const linkBtn = document.getElementById(`link-${categoria}`);
+            selecoes[categoria] = catalogo[categoria].find(i => i.id === itemId);
+            
+            if (selecoes[categoria] && selecoes[categoria].link) {
+                linkBtn.href = selecoes[categoria].link;
+                linkBtn.classList.remove('hidden');
+            } else {
+                linkBtn.classList.add('hidden');
+            }
+            
+            let total = 0;
+            let listaHtml = "";
+            for (const cat in selecoes) {
+                if (selecoes[cat]) {
+                    total += selecoes[cat].preco;
+                    listaHtml += `<div class="flex justify-between"><span>${selecoes[cat].nome}</span> <span>R$ ${selecoes[cat].preco.toFixed(2)}</span></div>`;
+                }
+            }
+            document.getElementById('lista-itens').innerHTML = listaHtml;
+            document.getElementById('valor-total').innerText = `R$ ${total.toFixed(2)}`;
         }
-      }
+        
+        function gerarRelatorio() {
+            const total = document.getElementById('valor-total').innerText;
+            
+            // Cria um novo conteúdo HTML em memória
+            let htmlContent = `
+                <html>
+                    <head>
+                        <title>Orçamento de PC</title>
+                        <style>
+                            body { font-family: sans-serif; padding: 40px; line-height: 1.6; color: #333; }
+                            h1 { color: #2563eb; }
+                            .item { display: flex; justify-content: space-between; border-bottom: 1px solid #ddd; padding: 10px 0; }
+                            .total { margin-top: 20px; font-size: 1.5em; font-weight: bold; }
+                        </style>
+                    </head>
+                    <body>
+                        <h1>Orçamento de Computador</h1>
+                        <p>Data: ${new Date().toLocaleDateString()}</p>
+                        <hr>
+            `;
 
-      const relatorioHtml = [
-        '<!DOCTYPE html>',
-        '<html lang="pt-BR">',
-        '<head>',
-        '<meta charset="UTF-8">',
-        '<title>42 Building My PC - Relatório</title>',
-        '<style>',
-        '  * { box-sizing: border-box; margin: 0; padding: 0; }',
-        '  body { font-family: Segoe UI, Arial, sans-serif; background: #0d1117; color: #c9d1d9; padding: 40px 20px; line-height: 1.6; }',
-        '  .container { max-width: 800px; margin: 0 auto; background: #161b22; border: 1px solid #21262d; border-radius: 12px; padding: 40px; }',
-        '  h1 { color: #7dd3dc; font-size: 2em; letter-spacing: 0.5px; margin-bottom: 4px; }',
-        '  .subtitulo { color: #8b949e; margin-bottom: 24px; font-size: 0.95em; }',
-        '  hr { border: none; border-top: 1px solid #21262d; margin-bottom: 20px; }',
-        '  .item { display: flex; justify-content: space-between; gap: 20px; border-bottom: 1px solid #21262d; padding: 14px 4px; }',
-        '  .item span:first-child { flex: 1; color: #c9d1d9; }',
-        '  .item strong { color: #7dd3dc; }',
-        '  .item a { color: #7dd3dc; text-decoration: none; border-bottom: 1px dashed rgba(125, 211, 220, 0.3); }',
-        '  .preco { color: #e6edf3; font-weight: 600; white-space: nowrap; }',
-        '  .total { margin-top: 24px; font-size: 1.6em; font-weight: bold; text-align: right; color: #7dd3dc; }',
-        '</style>',
-        '</head>',
-        '<body>',
-        '<div class="container">',
-        '<h1>42 Building My PC</h1>',
-        `<p class="subtitulo">Orçamento de Computador · Data: ${dataAtual}</p>`,
-        '<hr>',
-        itensHtml || '<p>Nenhum item selecionado.</p>',
-        `<div class="total">Total: ${total}</div>`,
-        '</div>',
-        '\x3C/body>',
-        '\x3C/html>'
-      ].join('');
+            for (const cat in selecoes) {
+                if (selecoes[cat]) {
+                    htmlContent += `
+                        <div class="item">
+                            <span><strong>${cat.toUpperCase()}:</strong> ${selecoes[cat].nome}</span>
+                            <span>R$ ${selecoes[cat].preco.toFixed(2)}</span>
+                        </div>
+                    `;
+                }
+            }
 
-      const novaJanela = window.open('', '_blank');
-      if (!novaJanela) {
-        alert('O navegador bloqueou a abertura da nova aba. Permita pop-ups para este site.');
-        return;
-      }
+            htmlContent += `<div class="total">Total: ${total}</div></body></html>`;
 
-      novaJanela.document.open();
-      novaJanela.document.write(relatorioHtml);
-      novaJanela.document.close();
-    }
-
-    (function () {
-      const root = document.documentElement;
-      const toggleBtn = document.getElementById('themeToggle');
-
-      let temaSalvo = null;
-      try {
-        const bruto = localStorage.getItem('42-building-my-pc-state');
-        if (bruto) {
-          const dados = JSON.parse(bruto);
-          temaSalvo = dados.tema || null;
+            // Abre uma nova janela e escreve o conteúdo
+            const novaJanela = window.open("", "_blank");
+            novaJanela.document.write(htmlContent);
+            novaJanela.document.close(); // Finaliza a escrita
         }
-      } catch (erro) {}
 
-      let tema = temaSalvo || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-
-      function aplicarTema(novoTema) {
-        tema = novoTema;
-        root.setAttribute('data-theme', tema);
-        toggleBtn.dataset.mode = tema;
-        const darkAtivo = tema === 'dark';
-        toggleBtn.setAttribute('aria-checked', darkAtivo ? 'true' : 'false');
-        toggleBtn.setAttribute('aria-label', darkAtivo ? 'Alternar para modo claro' : 'Alternar para modo escuro');
-      }
-
-      aplicarTema(tema);
-
-      toggleBtn.addEventListener('click', () => {
-        aplicarTema(tema === 'dark' ? 'light' : 'dark');
-        salvarEstado();
-      });
-
-      const mediaTheme = window.matchMedia('(prefers-color-scheme: dark)');
-      if (typeof mediaTheme.addEventListener === 'function') {
-        mediaTheme.addEventListener('change', (event) => {
-          let bruto = null;
-          try {
-            bruto = localStorage.getItem('42-building-my-pc-state');
-          } catch (erro) {}
-          if (!bruto) {
-            aplicarTema(event.matches ? 'dark' : 'light');
-          }
-        });
-      }
-    })();
-
-    carregarCatalogo();
-  </script>
+        carregarCatalogo();
+    </script>
 </body>
 </html>
