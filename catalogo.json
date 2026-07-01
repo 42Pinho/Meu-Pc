@@ -1,0 +1,66 @@
+{
+  "placa_mae": [
+    { "id": "mobo-001", "nome": "Asus Prime B550M-A", "preco": 750.00, "link": "https://loja.exemplo/mobo1" },
+    { "id": "mobo-002", "nome": "MSI B760M Bomber", "preco": 890.00, "link": "https://loja.exemplo/mobo2" }
+  ],
+  "processador": [
+    { "id": "cpu-001", "nome": "AMD Ryzen 5 5600", "preco": 850.00, "link": "https://loja.exemplo/cpu1" },
+    { "id": "cpu-002", "nome": "Intel Core i5-13400F", "preco": 1200.00, "link": "https://loja.exemplo/cpu2" }
+  ],
+  "memoria_ram": [
+    { "id": "ram-001", "nome": "8GB DDR4 3200MHz", "preco": 180.00, "link": "https://loja.exemplo/ram1" },
+    { "id": "ram-002", "nome": "16GB DDR5 5600MHz", "preco": 550.00, "link": "https://loja.exemplo/ram2" }
+  ],
+  "ssd": [
+    { "id": "ssd-001", "nome": "SSD 480GB SATA", "preco": 220.00, "link": "https://loja.exemplo/ssd1" },
+    { "id": "ssd-002", "nome": "SSD 1TB NVMe M.2", "preco": 450.00, "link": "https://loja.exemplo/ssd2" }
+  ],
+  "hd": [
+    { "id": "hd-001", "nome": "HD 1TB Seagate", "preco": 300.00, "link": "https://loja.exemplo/hd1" },
+    { "id": "hd-002", "nome": "HD 2TB Toshiba", "preco": 420.00, "link": "https://loja.exemplo/hd2" }
+  ],
+  "fonte": [
+    { "id": "psu-001", "nome": "Fonte 500W 80 Plus", "preco": 300.00, "link": "https://loja.exemplo/psu1" },
+    { "id": "psu-002", "nome": "Fonte 650W 80 Plus Gold", "preco": 480.00, "link": "https://loja.exemplo/psu2" }
+  ],
+  "placa_de_video": [
+    { "id": "gpu-001", "nome": "NVIDIA RTX 3060 12GB", "preco": 1750.00, "link": "https://loja.exemplo/gpu1" },
+    { "id": "gpu-002", "nome": "AMD RX 6600 8GB", "preco": 1350.00, "link": "https://loja.exemplo/gpu2" }
+  ],
+  "gabinete": [
+    { "id": "case-001", "nome": "Gabinete Gamer Vidro", "preco": 350.00, "link": "https://loja.exemplo/case1" },
+    { "id": "case-002", "nome": "Gabinete Mesh Airflow", "preco": 420.00, "link": "https://loja.exemplo/case2" }
+  ],
+  "fans": [
+    { "id": "fan-001", "nome": "Kit 3 Fans RGB", "preco": 120.00, "link": "https://loja.exemplo/fan1" },
+    { "id": "fan-002", "nome": "Fan Avulso 120mm", "preco": 45.00, "link": "https://loja.exemplo/fan2" }
+  ],
+  "watercooler": [
+    { "id": "wc-001", "nome": "Water Cooler 240mm", "preco": 400.00, "link": "https://loja.exemplo/wc1" },
+    { "id": "wc-002", "nome": "Water Cooler 360mm", "preco": 600.00, "link": "https://loja.exemplo/wc2" }
+  ],
+  "monitor": [
+    { "id": "mon-001", "nome": "Monitor 24\" 144Hz", "preco": 900.00, "link": "https://loja.exemplo/mon1" },
+    { "id": "mon-002", "nome": "Monitor 27\" QHD", "preco": 1600.00, "link": "https://loja.exemplo/mon2" }
+  ],
+  "mouse": [
+    { "id": "mou-001", "nome": "Mouse Gamer 16k DPI", "preco": 200.00, "link": "https://loja.exemplo/mou1" },
+    { "id": "mou-002", "nome": "Mouse Wireless Leve", "preco": 350.00, "link": "https://loja.exemplo/mou2" }
+  ],
+  "teclado": [
+    { "id": "tec-001", "nome": "Teclado Mecânico RGB", "preco": 250.00, "link": "https://loja.exemplo/tec1" },
+    { "id": "tec-002", "nome": "Teclado TKL Switch Blue", "preco": 280.00, "link": "https://loja.exemplo/tec2" }
+  ],
+  "fone": [
+    { "id": "fon-001", "nome": "Headset Gamer 7.1", "preco": 180.00, "link": "https://loja.exemplo/fon1" },
+    { "id": "fon-002", "nome": "Fone In-Ear Profissional", "preco": 220.00, "link": "https://loja.exemplo/fon2" }
+  ],
+  "microfone": [
+    { "id": "mic-001", "nome": "Microfone USB Condensador", "preco": 150.00, "link": "https://loja.exemplo/mic1" },
+    { "id": "mic-002", "nome": "Microfone Boom Arm", "preco": 290.00, "link": "https://loja.exemplo/mic2" }
+  ],
+  "caixa_de_som": [
+    { "id": "som-001", "nome": "Caixa de Som 2.0", "preco": 90.00, "link": "https://loja.exemplo/som1" },
+    { "id": "som-002", "nome": "Soundbar Gamer RGB", "preco": 160.00, "link": "https://loja.exemplo/som2" }
+  ]
+}
