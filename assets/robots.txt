@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://42pinho.github.io/Meu-Pc/sitemap.xml
